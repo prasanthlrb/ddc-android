@@ -1,0 +1,7 @@
+{
+  "name": "ddc-track",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
