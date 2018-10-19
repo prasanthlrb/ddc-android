@@ -1,0 +1,26 @@
+page-admin-dashboard {
+    .bgcolor{
+        background: linear-gradient(to bottom, rgba(25,118,159,100%), rgba(53,216,166,100%));
+    }
+    .image{
+       font-size: 120px;  
+        color: #19769F;
+    }
+    .card-item{
+        position: absolute;
+        top: 10%;
+        border-radius: 5%;
+    }
+    .size{
+        font-size: 14px;
+    }
+    .size1{
+        font-size: 14px;
+        padding-top: 10px
+    }
+    .border{
+        border: 1px solid #5FE5BC;
+        border-radius: 5px;
+     
+    }
+}

@@ -1,0 +1,65 @@
+
+
+
+<ion-content class="bgcolor">
+    <div>
+        <h1 style="color:#fff;font-size: 20px" padding text-center>Dashboard</h1>
+     
+    </div>
+      <ion-card padding class="card-item">
+          <ion-item text-center>
+              <ion-icon name="contact" class="image"></ion-icon>
+            <h2 style="color:#19769F">Thowsif</h2>
+          </ion-item>
+      <hr>
+          <ion-row>
+              <ion-col col-6 text-center>
+                <strong class="size">Total Staff</strong>
+                <p class="size1">1000</p>
+              </ion-col>
+              <ion-col col-6 text-center>
+                <strong class="size">Pending Orders</strong>
+                <p class="size1">2000</p>
+              </ion-col>
+              
+            </ion-row>
+        <hr>
+        <ion-list>
+          <br>
+            <ion-item class="border" navPush="StaffListPage">
+            
+              <ion-icon style="color: #19769F" name="person-add" item-start></ion-icon>
+              Staff's
+     
+              <ion-icon style="color: #19769F" ios="ios-arrow-forward" md="md-arrow-forward" item-end></ion-icon>
+            </ion-item>
+            <br>
+            <ion-item class="border" navPush="OrderListPage">
+            
+              <ion-icon style="color: #19769F" ios="ios-cart" md="md-cart" item-start></ion-icon>
+               Order's
+     
+              <ion-icon style="color: #19769F" ios="ios-arrow-forward" md="md-arrow-forward" item-end></ion-icon>
+            </ion-item>
+            <br>
+            <ion-item class="border" (click)="setting()">
+            
+              <ion-icon style="color: #19769F" ios="ios-contact" md="md-contact" item-start></ion-icon>
+              Settings
+     
+              <ion-icon style="color: #19769F" ios="ios-arrow-forward" md="md-arrow-forward" item-end></ion-icon>
+            </ion-item>
+            <br>
+            <ion-item class="border" navPush="LoginPage">
+            
+              <ion-icon style="color: #19769F" ios="ios-home" md="md-home" item-start></ion-icon>
+              Logout
+     
+              <ion-icon style="color: #19769F" ios="ios-arrow-forward" md="md-arrow-forward" item-end></ion-icon>
+            </ion-item>
+          </ion-list>
+      
+        
+        </ion-card>
+  </ion-content>
+  
