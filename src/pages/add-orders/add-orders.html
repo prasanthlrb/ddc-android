@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Create Order</ion-title>
     <ion-buttons start>
-      <button ion-button icon-only color="royal">
+      <button ion-button icon-only color="royal" navPush="OrderListPage">
        <ion-icon name="cart"></ion-icon>
       </button>
     </ion-buttons>
@@ -24,29 +24,25 @@
         
     <ion-item class="border">
       
-        <ion-input type="text" placeholder="Order ID"></ion-input>
+        <ion-input type="text" [(ngModel)]="order.id" placeholder="Service / Order ID"></ion-input>
       </ion-item>
   <br>  
   <ion-item class="border">
     <ion-label>Select Employee</ion-label>
-    <ion-select>
-      <ion-option value="nes">NES</ion-option>
-      <ion-option value="n64">Nintendo64</ion-option>
-      <ion-option value="ps">PlayStation</ion-option>
-      <ion-option value="genesis">Sega Genesis</ion-option>
-      <ion-option value="saturn">Sega Saturn</ion-option>
-      <ion-option value="snes">SNES</ion-option>
+    <ion-select  [(ngModel)]="orderEmp">
+      <ion-option value="{{staff.name}}-{{staff.id}}" *ngFor="let staff of staffList | async">{{staff.name}} - {{staff.id}}</ion-option>
+     
     </ion-select>
   </ion-item>
 <br>
 <ion-item class="border">
       
-  <ion-textarea placeholder="Address"></ion-textarea>
+  <ion-textarea [(ngModel)]="order.address" placeholder="Address"></ion-textarea>
 </ion-item>
 <br>
   </ion-list>
   <div text-center>
 
-    <button ion-button block class="probg">Submit</button>
+    <button ion-button block class="probg" (click)="saveOrder(order)">Submit</button>
   </div>
 </ion-content>

@@ -20,23 +20,24 @@
           
           <ion-item class="border">
             
-              <ion-input type="text" placeholder="Enter your ID"></ion-input>
+              <ion-input type="text" [(ngModel)]="staff.id" placeholder="Enter your ID"></ion-input>
             </ion-item>
         <br>
          
         
           <ion-item class="border">
             
-              <ion-input type="password" placeholder="Password"></ion-input>
+              <ion-input type="password" [(ngModel)]="staff.password" placeholder="Password"></ion-input>
             </ion-item>
         <br>
          
         </ion-list>
         <div text-center>
             
-            <button ion-button round large block class="track">LOGIN</button>
+            <button ion-button round large block class="track" (click)="staffLogin(staff)">LOGIN</button>
          
         </div>
-  
+
+       
   </ion-content>
   

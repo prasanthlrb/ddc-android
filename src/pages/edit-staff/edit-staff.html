@@ -8,10 +8,10 @@
 
 
 <ion-content padding>
-  <button ion-button clear (click)="backtodash()"><ion-icon style="font-size: 40px;color:#5FE5BC" ios="ios-arrow-dropleft-circle" md="md-arrow-dropleft-circle"></ion-icon> </button>
+  <button ion-button clear navPush="StaffListPage"><ion-icon style="font-size: 40px;color:#5FE5BC" ios="ios-arrow-dropleft-circle" md="md-arrow-dropleft-circle"></ion-icon> </button>
   <h1 style="color:#19769F" padding>Create Staff</h1>
     <ion-list class="list">
-      
+  
         
         <ion-item class="border">
           
@@ -37,6 +37,8 @@
       </ion-list>
       <div text-center>
 
-        <button ion-button block class="probg" (click)="addStaff(emp)">Save</button>
+        <button ion-button block class="probg" (click)="saveItem(emp)">Update</button>
+        <div class="padd"></div>
+        <button ion-button block color="danger" (click)="delete(emp)">Delete</button>
       </div>
 </ion-content>

@@ -1,12 +1,9 @@
+import { Order } from './../../model/order.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the StaffDashboardPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable} from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -14,12 +11,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'staff-dashboard.html',
 })
 export class StaffDashboardPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  loginData = {
+    name:"",id:""
+  }
+  orders:any[];
+  dummy:any[];
+  orderList: Observable<Order[]>;
+  constructor(
+    private afDatabase: AngularFireDatabase,
+    public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
+    this.storage.get('loginData').then((val) => {
+    this.loginData = val;
+    });
+  
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StaffDashboardPage');
+    this.afDatabase.list('order-list').valueChanges().subscribe(res => {
+      this.dummy = res;
+      let data = this.dummy.filter(user => user.empId === this.loginData.id);
+      this.orders = data;
+    });
   }
-
+  visited(id){
+    console.log(id);
+  }
+  logout(){
+    this.storage.clear();
+    this.navCtrl.setRoot('LoginPage');
+  }
 }

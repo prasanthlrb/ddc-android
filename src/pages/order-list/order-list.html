@@ -9,6 +9,9 @@
   <ion-navbar>
     <ion-title>Orders List</ion-title>
     <ion-buttons start>
+        <button ion-button icon-only color="royal" navPush="AdminDashboardPage">
+            <ion-icon name="home"></ion-icon>
+          </button>
       <button ion-button icon-only color="royal" navPush="AddOrdersPage">
        +<ion-icon name="cart"></ion-icon>
       </button>
@@ -16,19 +19,17 @@
   </ion-navbar>
 
 </ion-header>
-
-
-<ion-content padding>
+<ion-content>
   <ion-list>
-    <ion-item text-wrap>
+    <ion-item text-wrap *ngFor="let order of orderList | async">
       <ion-thumbnail item-start text-center>
-        <ion-icon style="font-size:30px;margin-top:15px" name="person"></ion-icon>
-        <p>209900</p>
+        
+        <ion-icon style="font-size:30px;margin-top:15px" name="person" color="primary"></ion-icon>
+        <p>{{order.empName}}</p>
       </ion-thumbnail>
-      <h2>#090887</h2>
-      <p>Salam Street (opposite to Municipality)
-        P.O.Box 105400 Abu Dhabi, U.A.E</p>
-      <button ion-button clear item-end>Edit</button>
+      <h2>#{{order.id}}</h2>
+      <p>{{order.address}}</p>
+      <button ion-button clear item-end navPush="EditOrderPage" [navParams]="{order: order}">Edit</button>
     </ion-item>
   </ion-list>
   <hr>

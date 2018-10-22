@@ -20,17 +20,18 @@
           
           <ion-item class="border">
             
-              <ion-input type="text" placeholder="Service / Order Id"></ion-input>
+              <ion-input type="text" [(ngModel)]="orderId" placeholder="Service / Order Id"></ion-input>
             </ion-item>
         <br>
          
         </ion-list>
         <div text-center>
             
-            <button ion-button round large block class="track">Track</button>
+            <button ion-button round large block class="track" (click)="customerLogin()">Track</button>
          
         </div>
-        <div class="footer">
+      
+        <div class="footer" *ngIf="visibleAdmin">
   
           <button ion-button clear small class="foot-letter" (click)="staff()">Staff</button>
           <button ion-button clear small class="foot-letter" (click)="admin()">Admin</button>

@@ -9,7 +9,7 @@
       <ion-card padding class="card-item">
           <ion-item text-center>
               <ion-icon name="contact" class="image"></ion-icon>
-            <h2 style="color:#19769F">Thowsif</h2>
+            <h2 style="color:#19769F">{{this.email}}</h2>
           </ion-item>
       <hr>
           <ion-row>
@@ -50,7 +50,7 @@
               <ion-icon style="color: #19769F" ios="ios-arrow-forward" md="md-arrow-forward" item-end></ion-icon>
             </ion-item>
             <br>
-            <ion-item class="border" navPush="LoginPage">
+            <ion-item class="border" (click)="logout()"> 
             
               <ion-icon style="color: #19769F" ios="ios-home" md="md-home" item-start></ion-icon>
               Logout

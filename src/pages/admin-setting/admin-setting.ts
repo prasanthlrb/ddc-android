@@ -1,6 +1,7 @@
+import { Admin } from './../../model/admin.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AngularFireAuth } from 'angularfire2/auth';
 /**
  * Generated class for the AdminSettingPage page.
  *
@@ -14,8 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'admin-setting.html',
 })
 export class AdminSettingPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+admin = {} as Admin;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+     private afAuth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
@@ -23,6 +25,25 @@ export class AdminSettingPage {
   }
   backtodash(){
     this.navCtrl.push("AdminDashboardPage");
+  }
+  async emailUpdate(admin:Admin){
+
+    this.afAuth.auth.currentUser.updateEmail(admin.email).then(function() {
+  console.log("Update successful");
+  // Update successful.
+}).catch(function(error) {
+  // An error happened.
+  console.log("An error happened.");
+});
+  }
+  async passwordUpdate(admin:Admin){
+    this.afAuth.auth.currentUser.updatePassword(admin.password).then(function() {
+      console.log("Update successful");
+      // Update successful.
+    }).catch(function(error) {
+      // An error happened.
+      console.log("An error happened.");
+    });
   }
 
 }

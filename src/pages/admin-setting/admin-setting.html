@@ -9,33 +9,30 @@
 
 <ion-content padding>
   <button ion-button clear (click)="backtodash()"><ion-icon style="font-size: 40px;color:#5FE5BC" ios="ios-arrow-dropleft-circle" md="md-arrow-dropleft-circle"></ion-icon> </button>
-  <h1 style="color:#19769F" padding>Update Profile</h1>
+  <h1 style="color:#19769F" padding>Change Credentials</h1>
     <ion-list class="list">
       
         
+     
         <ion-item class="border">
           
-            <ion-input type="text" placeholder="Full Name"></ion-input>
-          </ion-item>
-      <br>
-        <ion-item class="border">
-          
-            <ion-input type="text" placeholder="E-mail"></ion-input>
+            <ion-input type="text" [(ngModel)]="admin.email" placeholder="E-mail"></ion-input>
           </ion-item>
  <br>
-        <ion-item class="border">
-          
-            <ion-input type="text" placeholder="Password"></ion-input>
-          </ion-item>
- <br>
-        <ion-item class="border">
-          
-            <ion-input type="text" placeholder="Re-Password"></ion-input>
-          </ion-item>
- <br>
-      </ion-list>
-      <div text-center>
+ <div text-left>
 
-        <button ion-button block class="probg">Update Profile</button>
+    <button ion-button round class="probg" (click)="emailUpdate(admin)">Change Email</button>
+  </div>
+  <div style="padding-bottom:100px"></div>
+        <ion-item class="border">
+          
+            <ion-input type="text"  [(ngModel)]="admin.password" placeholder="Password"></ion-input>
+          </ion-item>
+ <br>
+      
+      </ion-list>
+      <div text-right >
+
+        <button ion-button round class="probg" (click)="passwordUpdate(admin)">Change Password</button>
       </div>
 </ion-content>
