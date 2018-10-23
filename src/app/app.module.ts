@@ -14,6 +14,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { Geolocation } from '@ionic-native/geolocation';
+import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
+import { LocationTrackerProvider } from '../service/admin/locationTracker.service';
 @NgModule({
   declarations: [
     MyApp
@@ -39,6 +41,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     AngularFireAuth,
     Geolocation,
     CallNumber,
+    BackgroundGeolocation,
+    LocationTrackerProvider
   ]
 })
 export class AppModule {}

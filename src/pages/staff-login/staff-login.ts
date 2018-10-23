@@ -2,6 +2,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Staff } from '../../model/staff.model';
+import { LocationTrackerProvider } from '../../service/admin/locationTracker.service';
 //import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
 
 
@@ -21,7 +22,7 @@ emp:any[];
   constructor(
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController, public navParams: NavParams,
-   // public locationTracker: LocationTrackerProvider
+    public locationTracker: LocationTrackerProvider
     ) {
   }
 
@@ -36,7 +37,7 @@ emp:any[];
     let data = this.emp.filter(user => user.id === staff.id)[0];
     if(data){
       if(data.password == staff.password){
-        //this.locationTracker.startTracking(staff.id);
+        this.locationTracker.startTracking(staff.id);
         this.navCtrl.setRoot('StaffDashboardPage',{
           loginData:data
         });
