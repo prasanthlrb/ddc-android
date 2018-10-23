@@ -20,10 +20,13 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let order of orders;" text-wrap>
-      <h2>#{{order.id}}</h2>
-      <p>{{order.address}}</p>
-      <button ion-button clear item-end (click)="visited(order.id)">Visited</button>
-    </ion-item>
+    <div *ngFor="let order of orderList | async">
+
+      <ion-item text-wrap *ngIf="order.empId == loginData.id">
+        <h2>#{{order.id}}</h2>
+        <p>{{order.address}}</p>
+        <button ion-button clear item-end (click)="visited(order)">Visited</button>
+      </ion-item>
+    </div>
   </ion-list>
 </ion-content>

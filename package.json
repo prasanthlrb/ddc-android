@@ -40,6 +40,7 @@
     "firebase": "^5.5.5",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
+    "mx.ferreyra.callnumber": "0.0.2",
     "promise-polyfill": "^8.1.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
@@ -66,7 +67,8 @@
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "=Find ours location"
-      }
+      },
+      "call-number": {}
     },
     "platforms": [
       "android"

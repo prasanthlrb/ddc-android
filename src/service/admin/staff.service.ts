@@ -10,10 +10,12 @@ private StaffListRef = this.db.list<Emp>('staff-list');
   getStaffList(){
       return this.StaffListRef;
   }
+  getOne(orderId){
+    return this.db.object<Emp>(`staff-list/${orderId}`);
+}
   addStaff(emp: Emp){
 
-    return this.db.object<Emp>(`staff-list/${emp.id}`).set(emp);
-     
+    return this.db.object<Emp>(`staff-list/${emp.id}`).set(emp);  
      
 
 

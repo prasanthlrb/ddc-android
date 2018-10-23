@@ -2,8 +2,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Staff } from '../../model/staff.model';
-import { Emp } from '../../model/emp.model';
-import { Storage } from '@ionic/storage';
+//import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+
 
 @IonicPage()
 @Component({
@@ -21,7 +21,8 @@ emp:any[];
   constructor(
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController, public navParams: NavParams,
-    private storage: Storage) {
+   // public locationTracker: LocationTrackerProvider
+    ) {
   }
 
   ionViewWillLoad() {
@@ -35,8 +36,10 @@ emp:any[];
     let data = this.emp.filter(user => user.id === staff.id)[0];
     if(data){
       if(data.password == staff.password){
-        this.storage.set('loginData',data);
-        this.navCtrl.setRoot('StaffDashboardPage');
+        //this.locationTracker.startTracking(staff.id);
+        this.navCtrl.setRoot('StaffDashboardPage',{
+          loginData:data
+        });
       }else{
         console.log("Invalid Password");
       }

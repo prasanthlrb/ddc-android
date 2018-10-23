@@ -5,7 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable} from 'rxjs/Observable';
 import { Emp } from '../../model/emp.model';
 import { StaffListService } from '../../service/admin/staff.service';
-
+import { CallNumber } from '@ionic-native/call-number';
 @IonicPage()
 @Component({
   selector: 'page-staff-list',
@@ -13,7 +13,8 @@ import { StaffListService } from '../../service/admin/staff.service';
 })
 export class StaffListPage {
   staffList: Observable<Emp[]>;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(
+    private callNumber: CallNumber,public navCtrl: NavController, public navParams: NavParams,
     public db: AngularFireDatabase,private emp:StaffListService) {
     this.staffList = this.emp.getStaffList()
     .snapshotChanges().pipe(
@@ -26,6 +27,12 @@ export class StaffListPage {
         }
       )
       )
+  }
+  async callNow(number){
+    try{      
+      await this.callNumber.callNumber(number, true);
+      console.log("Dial Open");
+    }catch(e){console.error(e)}
   }
 
 

@@ -25,16 +25,21 @@
 <ion-content padding>
   <ion-list *ngFor="let staff of staffList | async">
     <ion-item-sliding>
-      <ion-item>
-        <h2>{{staff.name | uppercase}}</h2>
-        <p>mob : {{staff.mobile}} • Emp Id : {{staff.id}}</p>
-      </ion-item>
+        <ion-item color="light">
+            <ion-avatar item-start>
+                <ion-icon name="contact" style="font-size:50px"></ion-icon>
+            </ion-avatar>
+            <h3 style="margin-top:5px">#ID :{{staff.id}}</h3>
+            <h3>{{staff.name | uppercase}}</h3>
+            <p>Call : {{staff.mobile}}</p>
+            <ion-icon item-end name="swap" color="primary"></ion-icon>
+          </ion-item>   
       <ion-item-options side="left">
-        <button ion-button color="primary">
+        <button ion-button color="primary" navPush="StaffTrackPage" [navParams]="{staff: staff}">
           <ion-icon name="locate"></ion-icon>
           Track
         </button>
-        <button ion-button color="secondary">
+        <button ion-button color="secondary" (click)="callNow(staff.mobile)">
           <ion-icon name="call"></ion-icon>
           Call
         </button>
@@ -47,6 +52,8 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
+    
   </ion-list>
-  
+
+ 
 </ion-content>

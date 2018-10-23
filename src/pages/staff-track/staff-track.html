@@ -6,8 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>staffTrack</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Hello {{staffData.name}}</ion-title>
+    <ion-buttons start>
+        <button ion-button icon-only color="royal" (click)="callNow()">
+          <ion-icon name="call"></ion-icon>
+         </button>
+       </ion-buttons>
   </ion-navbar>
 
 </ion-header>

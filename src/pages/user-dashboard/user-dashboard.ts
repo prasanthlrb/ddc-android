@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { CallNumber } from '@ionic-native/call-number';
+import { StaffListService } from '../../service/admin/staff.service';
 declare var google: any;
 
 /**
@@ -24,36 +25,35 @@ orderData={
   empName:'',
   id:undefined
 };
-overLocation: any[];
+employee:any;
+overLocation:any;
+
   constructor(private afDatabase: AngularFireDatabase,
     public navCtrl: NavController, public navParams: NavParams,
-    private callNumber: CallNumber) {
+    private callNumber: CallNumber,
+    private staff:StaffListService) {
     this.orderData = this.navParams.get('order');
     console.log(this.orderData);
-  }
-
-  ionViewWillLoad() {
-    this.afDatabase.list('location').valueChanges().subscribe(res => {
-      this.overLocation = res;
-      //let data = res;
-     try{
-
-       let data = this.overLocation.filter(user => user.id === this.orderData.empId)[0];
-       if(data){
- 
-         console.log(data);
-       }else{
-         console.log("No Data Found");
-       }
-     }catch(e){ console.error(e)}
+     this.staff.getOne(this.orderData.empId).valueChanges().subscribe(res => {
+      this.employee = res;
     });
-    //
-    //console.log(this.overLocation +'ok');
-    this.showMap();
+  //  .subscribe(snapshot => {
+  //   console.log(snapshot.key)
+  //   console.log(snapshot.val().finished)
+  //});
   }
 
-  showMap() {
-    const position = new google.maps.LatLng(-2.6289487, -44.3999958);
+  ionViewWillLoad() {   
+     this.afDatabase.object(`location/${this.orderData.empId}`).valueChanges().subscribe(res => {
+      this.overLocation = res;
+      console.log(this.overLocation);
+      this.showMap(this.overLocation);
+     });
+        
+  }
+
+  showMap(location) {
+    const position = new google.maps.LatLng(location.lat, location.lng);
 
     const options = {
       center: position,
@@ -70,7 +70,7 @@ overLocation: any[];
   }
   async callNow(){
     try{      
-      await this.callNumber.callNumber("9171035128", true);
+      await this.callNumber.callNumber(this.employee.mobile, true);
       console.log("Dial Open");
     }catch(e){console.error(e)}
   
